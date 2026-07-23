@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var moodle_scene = preload("res://scenes/moodle.tscn")
+@onready var behavior = $"%behavior"
 
 var moodles = []
 
@@ -17,6 +18,7 @@ const MOODLE_DEFINITIONS = {
 
 func _process(delta: float) -> void:
 	pass
+	
 	
 func add_moodle(type: String):
 	var new_moodle = moodle_scene.instantiate()

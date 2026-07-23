@@ -53,6 +53,13 @@ func moodLoop() -> void:
 			mood = 0.0
 		_sync_mood()
 		
+		if mood > 50:
+			$"%behavior".faceSys.setEmotion("happy")
+		elif mood < -75:
+			$"%behavior".faceSys.setEmotion("sad")
+		else:
+			$"%behavior".faceSys.setEmotion("normal")
+		
 		if mood > 80:
 			if not MoodleDisplay.has_moodle("gleeful"):
 				MoodleDisplay.add_moodle("gleeful")
@@ -93,7 +100,7 @@ func moodLoop() -> void:
 			MoodleDisplay.remove_moodle("depressed")
 			MoodleDisplay.remove_moodle("gloomy")
 			MoodleDisplay.remove_moodle("miserable")
-		elif mood < -10:
+		elif mood < -10 and mood > -30:
 			if not MoodleDisplay.has_moodle("sad"):
 				MoodleDisplay.add_moodle("sad")
 			MoodleDisplay.remove_moodle("happy")
@@ -103,7 +110,7 @@ func moodLoop() -> void:
 			MoodleDisplay.remove_moodle("depressed")
 			MoodleDisplay.remove_moodle("gloomy")
 			MoodleDisplay.remove_moodle("miserable")
-		elif mood < -30:
+		elif mood < -30 and mood > -50:
 			if not MoodleDisplay.has_moodle("depressed"):
 				MoodleDisplay.add_moodle("depressed")
 			MoodleDisplay.remove_moodle("happy")
@@ -113,7 +120,7 @@ func moodLoop() -> void:
 			MoodleDisplay.remove_moodle("gleeful")
 			MoodleDisplay.remove_moodle("gloomy")
 			MoodleDisplay.remove_moodle("miserable")
-		elif mood < -50:
+		elif mood < -50 and mood > -75: 
 			if not MoodleDisplay.has_moodle("gloomy"):
 				MoodleDisplay.add_moodle("gloomy")
 			MoodleDisplay.remove_moodle("happy")

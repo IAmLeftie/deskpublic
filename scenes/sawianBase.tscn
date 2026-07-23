@@ -1906,8 +1906,8 @@ position = Vector2(0.058938626, 1.9993173)
 shape = SubResource("CircleShape2D_73j8h")
 
 [node name="FThigh" type="RigidBody2D" parent="RigidBodies" unique_id=69657827]
-position = Vector2(0.1732912, -15.68452)
-rotation = 0.19817294
+position = Vector2(0.17329097, -15.684519)
+rotation = 0.198173
 scale = Vector2(0.99999964, 0.99999964)
 collision_layer = 8
 mass = 0.001
@@ -1928,9 +1928,9 @@ rotation = -0.1972222
 shape = SubResource("CapsuleShape2D_xrsx0")
 
 [node name="FCrus" type="RigidBody2D" parent="RigidBodies" unique_id=251590417]
-position = Vector2(-4.484632, -10.594864)
-rotation = 0.11549712
-scale = Vector2(0.99999934, 0.99999934)
+position = Vector2(-4.4846325, -10.594865)
+rotation = 0.11549736
+scale = Vector2(0.9999993, 0.9999993)
 collision_layer = 8
 mass = 0.001
 gravity_scale = 0.8
@@ -1949,9 +1949,9 @@ rotation = 1.1065388
 shape = SubResource("CapsuleShape2D_s1ecb")
 
 [node name="FFoot" type="RigidBody2D" parent="RigidBodies" unique_id=2058845088]
-position = Vector2(-4.7586756, -5.4672627)
-rotation = 0.55634385
-scale = Vector2(0.99999934, 0.99999934)
+position = Vector2(-4.758678, -5.467263)
+rotation = 0.5563441
+scale = Vector2(0.9999993, 0.9999993)
 collision_layer = 8
 mass = 0.001
 gravity_scale = 0.8
@@ -2520,6 +2520,7 @@ scroll_active = false
 horizontal_alignment = 1
 
 [node name="behavior" type="Node" parent="." unique_id=114253932]
+unique_name_in_owner = true
 script = ExtResource("18_8de8m")
 
 [node name="skinmapper" type="Node" parent="behavior" unique_id=1582520777]
