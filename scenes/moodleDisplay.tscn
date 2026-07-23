@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dye4q80ao1605" path="res://Scripts/moodle_display.gd" id="1_mwyvu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1nm"]
-size = Vector2(100, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mwyvu"]
 size = Vector2(40, 73)
 
@@ -15,10 +12,7 @@ script = ExtResource("1_mwyvu")
 position = Vector2(0, -10)
 collision_layer = 2
 collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=183459742]
-position = Vector2(0, 10)
-shape = SubResource("RectangleShape2D_ge1nm")
+monitorable = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1411286064]
 position = Vector2(0, 56.5)
