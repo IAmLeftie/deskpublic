@@ -106,7 +106,12 @@ func passivetalk():
 	while true:
 		if !gbData.settings["mute"]:
 			await get_tree().create_timer(randf_range(24.5, 55.5)).timeout
-			dialogueSys.pool = data.passive
+			if moodSys.mood > 50:
+				dialogueSys.pool = data.HappyPassive
+			elif moodSys.mood < -30:
+				dialogueSys.pool = data.LowPassive
+			else:
+				dialogueSys.pool = data.MidPassive
 			dialogueSys.speedMod = 1.3
 			dialogueSys.send()
 		await get_tree().create_timer(.1).timeout

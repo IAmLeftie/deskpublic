@@ -7,8 +7,8 @@ var moodles = []
 
 const MOODLE_DEFINITIONS = {
 	"sad": {"background": preload("res://assets/moodles/mood1.png"), "foreground": preload("res://assets/moodles/sad.png")},
-	"depressed": {"background": preload("res://assets/moodles/mood2.png"), "foreground": preload("res://assets/moodles/depression.png")},
-	"gloomy": {"background": preload("res://assets/moodles/mood3.png"), "foreground": preload("res://assets/moodles/gloomy.png")},
+	"gloomy": {"background": preload("res://assets/moodles/mood2.png"), "foreground": preload("res://assets/moodles/gloomy.png")},
+	"depressed": {"background": preload("res://assets/moodles/mood3.png"), "foreground": preload("res://assets/moodles/depression.png")},
 	"miserable": {"background": preload("res://assets/moodles/mood4.png"), "foreground": preload("res://assets/moodles/miserable.png")},
 	"satisfied": {"background": preload("res://assets/moodles/mood5.png"), "foreground": preload("res://assets/moodles/happy.png")},
 	"excited": {"background": preload("res://assets/moodles/mood6.png"), "foreground": preload("res://assets/moodles/happy.png")},

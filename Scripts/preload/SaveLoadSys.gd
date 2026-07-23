@@ -105,7 +105,7 @@ func newsave():
 
 func newTrans():
 	#fix this later make it bassdfjogsdjfoigjsdfgjosdifgjiosdfjg nvm its good as it
-	var defaultTrans = "res://Scripts/singletons/TEMPDialogue.json"
+	var defaultTrans = "res://Scripts/singletons/yapENG.json"
 	
 	text = loadjson(defaultTrans).duplicate(true)
 	savetodisk(transPath, text)

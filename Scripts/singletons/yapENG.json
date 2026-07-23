@@ -16,7 +16,15 @@
 		"MidPassive": [
 			"This isn't horrible...",
 			"Better here than there...",
-			"I honestly dont mind this but things could be better."
+			"I honestly dont mind this but things could be better.",
+			"This test is kinda boring....",
+			"What exactly are we testing this time?..",
+			"What kind of test is this?...",
+			"This is really weird....",
+			"Im very bored.",
+			"When can I go back?...",
+			"This test kinda sucks....",
+			"waow"
 		],
 		"LowPassive": [
 			"3;",
@@ -153,6 +161,22 @@
 		],
 		"noticing": [
 			"Hello?"
+		],
+		"screamBIG": [
+			"[shake]WAHHHAHHHHHHHHHHHHHHH!!!!!!",
+			"[shake]HEY!!!!!!",
+			"[shake]AAAAAAAAAAHHHHHHHH!!!!!!",
+			"[shake]WOAHHHHHH!!"
+		],
+		"getUp": [
+			"[wave]Ugh... no more please!",
+			"[wave]Ow!",
+			"[wave]Please never do that again!",
+			"[wave]Stop that!"
+		],
+		"start": [
+			"... Hello?",
+			"Uhhhhh....."
 		],
 		"test2": [
 			"[wave]The quick brown fox jumped over the lazy dog."
