@@ -108,8 +108,10 @@ func passivetalk():
 			await get_tree().create_timer(randf_range(24.5, 55.5)).timeout
 			if moodSys.mood > 50:
 				dialogueSys.pool = data.HappyPassive
-			elif moodSys.mood < -30:
+			elif moodSys.mood < -30 and moodSys.mood > -50:
 				dialogueSys.pool = data.LowPassive
+			elif moodSys.mood < -50:
+				dialogueSys.pool = data.VeryLowPassive
 			else:
 				dialogueSys.pool = data.MidPassive
 			dialogueSys.speedMod = 1.3
