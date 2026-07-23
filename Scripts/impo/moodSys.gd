@@ -7,6 +7,8 @@ extends Node
 @export var eyeNode: Sprite2D
 @export var mouthNode: Sprite2D
 
+@export var MoodleDisplay : Node
+
 
 @onready var mood: float = gbData.data.save.mood
 @onready var trust: float = gbData.data.save.trust
@@ -50,6 +52,96 @@ func moodLoop() -> void:
 		if !gbData.settings["lobotomize"]:
 			mood = 0.0
 		_sync_mood()
+		
+		if mood > 80:
+			if not MoodleDisplay.has_moodle("gleeful"):
+				MoodleDisplay.add_moodle("gleeful")
+			MoodleDisplay.remove_moodle("happy")
+			MoodleDisplay.remove_moodle("excited")
+			MoodleDisplay.remove_moodle("satisfied")
+			MoodleDisplay.remove_moodle("sad")
+			MoodleDisplay.remove_moodle("depressed")
+			MoodleDisplay.remove_moodle("gloomy")
+			MoodleDisplay.remove_moodle("miserable")
+		elif mood > 50:
+			if not MoodleDisplay.has_moodle("happy"):
+				MoodleDisplay.add_moodle("happy")
+			MoodleDisplay.remove_moodle("gleeful")
+			MoodleDisplay.remove_moodle("excited")
+			MoodleDisplay.remove_moodle("satisfied")
+			MoodleDisplay.remove_moodle("sad")
+			MoodleDisplay.remove_moodle("depressed")
+			MoodleDisplay.remove_moodle("gloomy")
+			MoodleDisplay.remove_moodle("miserable")
+		elif mood > 30:
+			if not MoodleDisplay.has_moodle("excited"):
+				MoodleDisplay.add_moodle("excited")
+			MoodleDisplay.remove_moodle("happy")
+			MoodleDisplay.remove_moodle("gleeful")
+			MoodleDisplay.remove_moodle("satisfied")
+			MoodleDisplay.remove_moodle("sad")
+			MoodleDisplay.remove_moodle("depressed")
+			MoodleDisplay.remove_moodle("gloomy")
+			MoodleDisplay.remove_moodle("miserable")
+		elif mood > 10:
+			if not MoodleDisplay.has_moodle("satisfied"):
+				MoodleDisplay.add_moodle("satisfied")
+			MoodleDisplay.remove_moodle("happy")
+			MoodleDisplay.remove_moodle("excited")
+			MoodleDisplay.remove_moodle("gleeful")
+			MoodleDisplay.remove_moodle("sad")
+			MoodleDisplay.remove_moodle("depressed")
+			MoodleDisplay.remove_moodle("gloomy")
+			MoodleDisplay.remove_moodle("miserable")
+		elif mood < -10:
+			if not MoodleDisplay.has_moodle("sad"):
+				MoodleDisplay.add_moodle("sad")
+			MoodleDisplay.remove_moodle("happy")
+			MoodleDisplay.remove_moodle("excited")
+			MoodleDisplay.remove_moodle("satisfied")
+			MoodleDisplay.remove_moodle("gleeful")
+			MoodleDisplay.remove_moodle("depressed")
+			MoodleDisplay.remove_moodle("gloomy")
+			MoodleDisplay.remove_moodle("miserable")
+		elif mood < -30:
+			if not MoodleDisplay.has_moodle("depressed"):
+				MoodleDisplay.add_moodle("depressed")
+			MoodleDisplay.remove_moodle("happy")
+			MoodleDisplay.remove_moodle("excited")
+			MoodleDisplay.remove_moodle("satisfied")
+			MoodleDisplay.remove_moodle("sad")
+			MoodleDisplay.remove_moodle("gleeful")
+			MoodleDisplay.remove_moodle("gloomy")
+			MoodleDisplay.remove_moodle("miserable")
+		elif mood < -50:
+			if not MoodleDisplay.has_moodle("gloomy"):
+				MoodleDisplay.add_moodle("gloomy")
+			MoodleDisplay.remove_moodle("happy")
+			MoodleDisplay.remove_moodle("excited")
+			MoodleDisplay.remove_moodle("satisfied")
+			MoodleDisplay.remove_moodle("sad")
+			MoodleDisplay.remove_moodle("depressed")
+			MoodleDisplay.remove_moodle("gleeful")
+			MoodleDisplay.remove_moodle("miserable")
+		elif mood < -75:
+			if not MoodleDisplay.has_moodle("miserable"):
+				MoodleDisplay.add_moodle("miserable")
+			MoodleDisplay.remove_moodle("happy")
+			MoodleDisplay.remove_moodle("excited")
+			MoodleDisplay.remove_moodle("satisfied")
+			MoodleDisplay.remove_moodle("sad")
+			MoodleDisplay.remove_moodle("depressed")
+			MoodleDisplay.remove_moodle("gloomy")
+			MoodleDisplay.remove_moodle("gleeful")
+		else:
+			MoodleDisplay.remove_moodle("gleeful")
+			MoodleDisplay.remove_moodle("happy")
+			MoodleDisplay.remove_moodle("excited")
+			MoodleDisplay.remove_moodle("satisfied")
+			MoodleDisplay.remove_moodle("sad")
+			MoodleDisplay.remove_moodle("depressed")
+			MoodleDisplay.remove_moodle("gloomy")
+			MoodleDisplay.remove_moodle("miserable")
 			
 func calcmood(total: float):
 	#health

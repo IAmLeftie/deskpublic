@@ -10,6 +10,7 @@ nuget.config
 # Godot 4+ specific ignores
 .godot/
 .nomedia
+*.import
 
 # Godot-specific ignores
 .import/

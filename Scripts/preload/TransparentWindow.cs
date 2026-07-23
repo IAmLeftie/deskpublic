@@ -9,72 +9,72 @@ using System.Runtime.InteropServices;
 public partial class TransparentWindow : Node
 { // Autoloaded
 
-    // SetWindowLong() modifies a specific flag value associated with a window.
-    // We pass the window handle, the index of the property, and the flags the property will have
-    [DllImport("user32.dll")]
-    private static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
+	// SetWindowLong() modifies a specific flag value associated with a window.
+	// We pass the window handle, the index of the property, and the flags the property will have
+	[DllImport("user32.dll")]
+	private static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
 
-    // This is the index of the property we want to modify
-    private const int GwlExStyle = -20;
+	// This is the index of the property we want to modify
+	private const int GwlExStyle = -20;
 
-    // The flags we want to set
-    private const int WsExLayered = 0x80000;         // Makes the window "layered"
-    private const int WsExTransparent = 0x20;       // Makes the window "clickable through"
-                                                    // check https://learn.microsoft.com/en-us/windows/win32/winmsg/extended-window-styles 
-                                                    // This is the variable containing the window handle
-    private IntPtr _hWnd;
-    //  private bool isGb;
+	// The flags we want to set
+	private const int WsExLayered = 0x80000;         // Makes the window "layered"
+	private const int WsExTransparent = 0x20;       // Makes the window "clickable through"
+													// check https://learn.microsoft.com/en-us/windows/win32/winmsg/extended-window-styles 
+													// This is the variable containing the window handle
+	private IntPtr _hWnd;
+	//  private bool isGb;
 
-    private bool _isWindows;
-    public override void _Ready()
-    {
-        _isWindows = OperatingSystem.IsWindows();
-        if (_isWindows)
-        {
-            // We store the window handle
-            _hWnd = (IntPtr)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, GetWindow().GetWindowId());
+	private bool _isWindows;
+	public override void _Ready()
+	{
+		_isWindows = OperatingSystem.IsWindows();
+		if (_isWindows)
+		{
+			// We store the window handle
+			_hWnd = (IntPtr)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, GetWindow().GetWindowId());
 
-            // We can set the properties already from here
-            SetWindowLong(_hWnd, GwlExStyle, WsExLayered);
+			// We can set the properties already from here
+			SetWindowLong(_hWnd, GwlExStyle, WsExLayered);
 
-            SetClickThrough(true);
-        }
-        else
-        {
-            GetWindow().Transparent = true;
-            GetWindow().TransparentBg = true;
-            GetWindow().MousePassthrough = true;
-            Engine.MaxFps = 45;
-        }
-    }
+			SetClickThrough(true);
+		}
+		else
+		{
+			GetWindow().Transparent = true;
+			GetWindow().TransparentBg = true;
+			GetWindow().MousePassthrough = true;
+			Engine.MaxFps = 45;
+		}
+	}
 
-    // This function sets the property of being clickable or not, we will call this function from the mouse detection 
-    public void SetClickThrough(bool clickthrough)
-    {
-        _isWindows = OperatingSystem.IsWindows();
-        if (_isWindows)
-        {
-            if (clickthrough)
-            {
-                // We set the window as layered and click-through
-                SetWindowLong(_hWnd, GwlExStyle, WsExLayered | WsExTransparent);
-                Engine.MaxFps = 45;
-            }
-            else
-            {
-                // We only set the window as layered, so it will be clickable
-                SetWindowLong(_hWnd, GwlExStyle, WsExLayered);
-                Engine.MaxFps = 60;
-            }
-        }
-        else
-        {
-            GetWindow().MousePassthrough = clickthrough;
-            Engine.MaxFps = clickthrough ? 45 : 60;
-        }
-    }
+	// This function sets the property of being clickable or not, we will call this function from the mouse detection 
+	public void SetClickThrough(bool clickthrough)
+	{
+		_isWindows = OperatingSystem.IsWindows();
+		if (_isWindows)
+		{
+			if (clickthrough)
+			{
+				// We set the window as layered and click-through
+				SetWindowLong(_hWnd, GwlExStyle, WsExLayered | WsExTransparent);
+				Engine.MaxFps = 45;
+			}
+			else
+			{
+				// We only set the window as layered, so it will be clickable
+				SetWindowLong(_hWnd, GwlExStyle, WsExLayered);
+				Engine.MaxFps = 60;
+			}
+		}
+		else
+		{
+			GetWindow().MousePassthrough = clickthrough;
+			Engine.MaxFps = clickthrough ? 45 : 60;
+		}
+	}
 
-    /* What is a layered window? 
+	/* What is a layered window? 
 	 * In the Windows API, a layered window is a special type of window that offers several
 	 * advantages over standard windows:
 	 * 

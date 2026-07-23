@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ba414x455mtp1"]
+
+[ext_resource type="Script" uid="uid://dye4q80ao1605" path="res://Scripts/moodle_display.gd" id="1_mwyvu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ge1nm"]
+size = Vector2(100, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwyvu"]
+size = Vector2(40, 73)
+
+[node name="MoodleDisplay" type="Node2D" unique_id=1603736630]
+script = ExtResource("1_mwyvu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1226173516]
+position = Vector2(0, -10)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=183459742]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_ge1nm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1411286064]
+position = Vector2(0, 56.5)
+shape = SubResource("RectangleShape2D_mwyvu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=497938529]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+alignment = 1
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

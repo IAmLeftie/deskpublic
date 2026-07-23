@@ -165,5 +165,3 @@ func checkpositive(num):
 			return true
 		else:
 			return false
-
-
