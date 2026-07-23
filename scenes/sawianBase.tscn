@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://pg0ohwt8ba8h" path="res://Scripts/impo/faceSys.gd" id="20_l2ler"]
 [ext_resource type="Theme" uid="uid://byc077a5abgew" path="res://assets/themes/dialogue.tres" id="21_57y4j"]
 [ext_resource type="Script" uid="uid://bhc642h64r7ev" path="res://Scripts/impo/moodSys.gd" id="22_un334"]
+[ext_resource type="Script" uid="uid://bywm70l38861" path="res://Scripts/impo/otherManager.gd" id="27_dvaus"]
 
 [sub_resource type="Animation" id="Animation_d7061"]
 length = 0.001
@@ -1911,8 +1912,8 @@ position = Vector2(0.058938626, 1.9993173)
 shape = SubResource("CircleShape2D_73j8h")
 
 [node name="FThigh" type="RigidBody2D" parent="RigidBodies" unique_id=69657827]
-position = Vector2(0.1732912, -15.68452)
-rotation = 0.19817294
+position = Vector2(0.17329073, -15.684519)
+rotation = 0.19817306
 scale = Vector2(0.99999964, 0.99999964)
 collision_layer = 8
 mass = 0.001
@@ -1933,8 +1934,8 @@ rotation = -0.1972222
 shape = SubResource("CapsuleShape2D_xrsx0")
 
 [node name="FCrus" type="RigidBody2D" parent="RigidBodies" unique_id=251590417]
-position = Vector2(-4.484632, -10.594864)
-rotation = 0.11549712
+position = Vector2(-4.484633, -10.594863)
+rotation = 0.11549713
 scale = Vector2(0.99999934, 0.99999934)
 collision_layer = 8
 mass = 0.001
@@ -1954,7 +1955,7 @@ rotation = 1.1065388
 shape = SubResource("CapsuleShape2D_s1ecb")
 
 [node name="FFoot" type="RigidBody2D" parent="RigidBodies" unique_id=2058845088]
-position = Vector2(-4.7586756, -5.4672627)
+position = Vector2(-4.7586765, -5.467262)
 rotation = 0.55634385
 scale = Vector2(0.99999934, 0.99999934)
 collision_layer = 8
@@ -2562,3 +2563,6 @@ MoodleDisplay = NodePath("../../textParent/MoodleDisplay")
 script = ExtResource("19_xvb24")
 richtextlabel = NodePath("../../textParent/RichTextLabel")
 fasdfasdfasddfas = NodePath("../movementHandler")
+
+[node name="other" type="Node" parent="behavior" unique_id=1034258904]
+script = ExtResource("27_dvaus")

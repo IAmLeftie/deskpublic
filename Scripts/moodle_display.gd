@@ -14,6 +14,21 @@ const MOODLE_DEFINITIONS = {
 	"excited": {"background": preload("res://assets/moodles/mood6.png"), "foreground": preload("res://assets/moodles/happy.png")},
 	"happy": {"background": preload("res://assets/moodles/mood7.png"), "foreground": preload("res://assets/moodles/happy.png")},
 	"gleeful": {"background": preload("res://assets/moodles/mood8.png"), "foreground": preload("res://assets/moodles/happy.png")},
+	
+	"full": {"background": preload("res://assets/moodles/mood6.png"), "foreground": preload("res://assets/moodles/happy.png")},
+	"satiated": {"background": preload("res://assets/moodles/mood5.png"), "foreground": preload("res://assets/moodles/hunger.png")},
+	"peckish": {"background": preload("res://assets/moodles/mood1.png"), "foreground": preload("res://assets/moodles/hunger.png")},
+	"hungry": {"background": preload("res://assets/moodles/mood2.png"), "foreground": preload("res://assets/moodles/hunger.png")},
+	"veryhungry": {"background": preload("res://assets/moodles/mood3.png"), "foreground": preload("res://assets/moodles/hunger.png")},
+	"starving": {"background": preload("res://assets/moodles/mood4.png"), "foreground": preload("res://assets/moodles/hunger.png")},
+	
+	"waterintoxicated": {"background": preload("res://assets/moodles/mood4.png"), "foreground": preload("res://assets/moodles/overhydrated.png")},
+	"overhydrated": {"background": preload("res://assets/moodles/mood2.png"), "foreground": preload("res://assets/moodles/overhydrated.png")},
+	"slaked": {"background": preload("res://assets/moodles/mood1.png"), "foreground": preload("res://assets/moodles/overhydrated.png")},
+	"thirsty": {"background": preload("res://assets/moodles/mood1.png"), "foreground": preload("res://assets/moodles/thirst.png")},
+	"dehydrated": {"background": preload("res://assets/moodles/mood2.png"), "foreground": preload("res://assets/moodles/thirst.png")},
+	"parched": {"background": preload("res://assets/moodles/mood3.png"), "foreground": preload("res://assets/moodles/thirst.png")},
+	"dessicated": {"background": preload("res://assets/moodles/mood4.png"), "foreground": preload("res://assets/moodles/thirst.png")},
 }
 
 func _process(delta: float) -> void:

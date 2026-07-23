@@ -22,6 +22,7 @@ var maxmood = gbData.settings["maxMood"]
 func _ready() -> void:
 	#initializeloops and signals
 	moodLoop()
+	hungerThirstLoop()
 
 
 #make sure things are updated
@@ -32,6 +33,140 @@ func _sync_mood() -> void:
 	maxmood = gbData.settings["maxMood"]
 	gbData.savetodisk("user://SAVE.json", gbData.data)
 
+# hunger and thirst loop
+func hungerThirstLoop() -> void:
+	while true:
+		await get_tree().create_timer(10).timeout
+		
+		var h = gbData.data.save.hunger
+		if h > 120:
+			if not MoodleDisplay.has_moodle("full"):
+				MoodleDisplay.add_moodle("full")
+			MoodleDisplay.remove_moodle("satiated")
+			MoodleDisplay.remove_moodle("peckish")
+			MoodleDisplay.remove_moodle("hungry")
+			MoodleDisplay.remove_moodle("veryhungry")
+			MoodleDisplay.remove_moodle("starving")
+		elif h > 100:
+			if not MoodleDisplay.has_moodle("satiated"):
+				MoodleDisplay.add_moodle("satiated")
+			MoodleDisplay.remove_moodle("full")
+			MoodleDisplay.remove_moodle("peckish")
+			MoodleDisplay.remove_moodle("hungry")
+			MoodleDisplay.remove_moodle("veryhungry")
+			MoodleDisplay.remove_moodle("starving")
+		elif h < 75 and h > 50:
+			if not MoodleDisplay.has_moodle("peckish"):
+				MoodleDisplay.add_moodle("peckish")
+			MoodleDisplay.remove_moodle("satiated")
+			MoodleDisplay.remove_moodle("full")
+			MoodleDisplay.remove_moodle("hungry")
+			MoodleDisplay.remove_moodle("veryhungry")
+			MoodleDisplay.remove_moodle("starving")
+		elif h < 50 and h > 35:
+			if not MoodleDisplay.has_moodle("hungry"):
+				MoodleDisplay.add_moodle("hungry")
+			MoodleDisplay.remove_moodle("satiated")
+			MoodleDisplay.remove_moodle("peckish")
+			MoodleDisplay.remove_moodle("full")
+			MoodleDisplay.remove_moodle("veryhungry")
+			MoodleDisplay.remove_moodle("starving")
+		elif h < 35 and h > 15:
+			if not MoodleDisplay.has_moodle("veryhungry"):
+				MoodleDisplay.add_moodle("veryhungry")
+			MoodleDisplay.remove_moodle("satiated")
+			MoodleDisplay.remove_moodle("peckish")
+			MoodleDisplay.remove_moodle("hungry")
+			MoodleDisplay.remove_moodle("full")
+			MoodleDisplay.remove_moodle("starving")
+		elif h <= 15:
+			if not MoodleDisplay.has_moodle("starving"):
+				MoodleDisplay.add_moodle("starving")
+			MoodleDisplay.remove_moodle("satiated")
+			MoodleDisplay.remove_moodle("peckish")
+			MoodleDisplay.remove_moodle("hungry")
+			MoodleDisplay.remove_moodle("veryhungry")
+			MoodleDisplay.remove_moodle("full")
+		else:
+			MoodleDisplay.remove_moodle("full")
+			MoodleDisplay.remove_moodle("satiated")
+			MoodleDisplay.remove_moodle("peckish")
+			MoodleDisplay.remove_moodle("hungry")
+			MoodleDisplay.remove_moodle("veryhungry")
+			MoodleDisplay.remove_moodle("starving")
+			
+		var t = gbData.data.save.thirst
+		if t > 175:
+			if not MoodleDisplay.has_moodle("waterintoxicated"):
+				MoodleDisplay.add_moodle("waterintoxicated")
+			MoodleDisplay.remove_moodle("overhydrated")
+			MoodleDisplay.remove_moodle("slaked")
+			MoodleDisplay.remove_moodle("thirsty")
+			MoodleDisplay.remove_moodle("dehydrated")
+			MoodleDisplay.remove_moodle("parched")
+			MoodleDisplay.remove_moodle("dessicated")
+		elif t > 125:
+			if not MoodleDisplay.has_moodle("overhydrated"):
+				MoodleDisplay.add_moodle("overhydrated")
+			MoodleDisplay.remove_moodle("waterintoxicated")
+			MoodleDisplay.remove_moodle("slaked")
+			MoodleDisplay.remove_moodle("thirsty")
+			MoodleDisplay.remove_moodle("dehydrated")
+			MoodleDisplay.remove_moodle("parched")
+			MoodleDisplay.remove_moodle("dessicated")
+		elif t > 100:
+			if not MoodleDisplay.has_moodle("slaked"):
+				MoodleDisplay.add_moodle("slaked")
+			MoodleDisplay.remove_moodle("overhydrated")
+			MoodleDisplay.remove_moodle("waterintoxicated")
+			MoodleDisplay.remove_moodle("thirsty")
+			MoodleDisplay.remove_moodle("dehydrated")
+			MoodleDisplay.remove_moodle("parched")
+			MoodleDisplay.remove_moodle("dessicated")
+		elif t <= 75 and t > 55:
+			if not MoodleDisplay.has_moodle("thirsty"):
+				MoodleDisplay.add_moodle("thirsty")
+			MoodleDisplay.remove_moodle("overhydrated")
+			MoodleDisplay.remove_moodle("slaked")
+			MoodleDisplay.remove_moodle("waterintoxicated")
+			MoodleDisplay.remove_moodle("dehydrated")
+			MoodleDisplay.remove_moodle("parched")
+			MoodleDisplay.remove_moodle("dessicated")
+		elif t <= 55 and t > 35:
+			if not MoodleDisplay.has_moodle("dehydrated"):
+				MoodleDisplay.add_moodle("dehydrated")
+			MoodleDisplay.remove_moodle("overhydrated")
+			MoodleDisplay.remove_moodle("slaked")
+			MoodleDisplay.remove_moodle("thirsty")
+			MoodleDisplay.remove_moodle("waterintoxicated")
+			MoodleDisplay.remove_moodle("parched")
+			MoodleDisplay.remove_moodle("dessicated")
+		elif t <= 35 and t > 20:
+			if not MoodleDisplay.has_moodle("parched"):
+				MoodleDisplay.add_moodle("parched")
+			MoodleDisplay.remove_moodle("overhydrated")
+			MoodleDisplay.remove_moodle("slaked")
+			MoodleDisplay.remove_moodle("thirsty")
+			MoodleDisplay.remove_moodle("dehydrated")
+			MoodleDisplay.remove_moodle("waterintoxicated")
+			MoodleDisplay.remove_moodle("dessicated")
+		elif t <= 20:
+			if not MoodleDisplay.has_moodle("dessicated"):
+				MoodleDisplay.add_moodle("dessicated")
+			MoodleDisplay.remove_moodle("overhydrated")
+			MoodleDisplay.remove_moodle("slaked")
+			MoodleDisplay.remove_moodle("thirsty")
+			MoodleDisplay.remove_moodle("dehydrated")
+			MoodleDisplay.remove_moodle("parched")
+			MoodleDisplay.remove_moodle("waterintoxicated")
+		else:
+			MoodleDisplay.remove_moodle("waterintoxicated")
+			MoodleDisplay.remove_moodle("overhydrated")
+			MoodleDisplay.remove_moodle("slaked")
+			MoodleDisplay.remove_moodle("thirsty")
+			MoodleDisplay.remove_moodle("dehydrated")
+			MoodleDisplay.remove_moodle("parched")
+			MoodleDisplay.remove_moodle("dessicated")
 
 #main mood loop
 func moodLoop() -> void:
@@ -46,6 +181,8 @@ func moodLoop() -> void:
 
 
 		mood = clamp(mood, minmood, maxmood)
+		
+		gbData.data.save.mood = mood
 		if gbData.devMode:
 			print(str("mood: ", mood))
 			print(str("tick: ", calcmood(1.0)))
