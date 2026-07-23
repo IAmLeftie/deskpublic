@@ -10,6 +10,8 @@ extends Node
 
 @onready var settings = gbData.settings
 
+@export var wanderMinCurve : Curve
+
 var beingDragged = false
 var ragdolled = false
 var launchflag = false
@@ -112,7 +114,9 @@ func passivetalk():
 
 func wandering():
 	while wander:
-		await get_tree().create_timer(randi_range(4, 8)).timeout
+		var wandertime = wanderMinCurve.sample(moodSys.mood)
+		
+		await get_tree().create_timer(randi_range(wandertime, wandertime + randf_range(1, 4))).timeout
 
 		var center = GlobalVariable.screenWidth / 2.0
 		var ex = moveSys.rigid.global_position.x
